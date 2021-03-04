@@ -10,8 +10,8 @@ module.exports = function(TASK,OPTIONS)
 
 	const files = bolt.resolvePath(OPTIONS.input,{directory: false});
 
-	if (helper.isNotPath(OPTIONS.output)) fs.mkdirSync(OPTIONS.output,{recursive: true});
-	 if (helper.isNotDirectory(OPTIONS.output)) bolt.throwError(`copy: Invalid "output" "${OPTIONS.output}" in task "${TASK}"`);
+	if (bolt.isNotPath(OPTIONS.output)) fs.mkdirSync(OPTIONS.output,{recursive: true});
+	 if (bolt.isNotDirectory(OPTIONS.output)) bolt.throwError(`copy: Invalid "output" "${OPTIONS.output}" in task "${TASK}"`);
 	let directory = OPTIONS.output;
 	if (directory.charAt(directory.length - 1) !== "/") directory += "/";
 
